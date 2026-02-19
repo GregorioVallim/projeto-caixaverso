@@ -1,0 +1,26 @@
+:root {
+    --primary: #ccc
+}
+
+
+
+
+.header {
+    background: #ccc;
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.welcome {
+    color: #000;
+    font-size: 24px;
+}
+
+img {
+    margin: 24px;
+    width: 150px;   
+}
+

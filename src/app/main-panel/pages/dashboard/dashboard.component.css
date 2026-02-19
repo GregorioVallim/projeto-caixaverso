@@ -1,0 +1,51 @@
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+  /* background-color: #FAFAFA; */
+}
+
+.div-pai {
+    padding: 40px 100px;
+}
+
+.welcome {    
+    font-size: 100px;
+}
+
+.saldo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.ver-tudo {
+    display: grid;
+    grid-row-end: auto;
+}
+
+/* .ver-tudo {
+   
+    
+} */
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.fz-20 {
+    font-size: 20px;
+}
+
+.fc-red {
+    color: red;
+}

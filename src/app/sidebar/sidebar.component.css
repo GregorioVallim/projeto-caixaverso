@@ -1,0 +1,20 @@
+aside {
+    height: 100vh;
+    background: #ccc;    
+    padding: 24px 24px;
+}
+
+.logo {
+    padding: 12px;
+    color: #000;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 10px;
+}
+
+
+

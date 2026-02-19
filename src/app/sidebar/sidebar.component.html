@@ -1,0 +1,20 @@
+<aside>
+
+  <div class="logo">
+        Logo
+        <!-- <a href="http://www.caixa.com.br">
+                <img src="img/CAIXA_volume_negativa.png" alt="LOGO CAIXA">
+        </a> -->
+    </div>
+  
+    <div class="mt-5">
+      @for (item of menuItems; track $index) {
+        <div class="my-4">
+          <button mat-flat-button (click)="redirectToPage(item.page)" class="w-100"  >
+            {{ item.label }}
+          </button>
+        </div>
+      }
+    </div>
+  
+</aside>
