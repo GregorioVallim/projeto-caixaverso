@@ -1,22 +1,28 @@
 <header class="header">
     <div class="welcome">
-        Olá, João!
+        <mat-card-title class="mt-30 d-flex justify-content-center align-items-center fs-3">Olá, {{ account?.name }}! </mat-card-title>
+        <!-- Olá, {{ account?.name }}!   -->
     </div>
+
+    <!-- <div class="welcome">
+        Conta: {{ account?.id }}
+    </div> -->
 
     <div class="welcome">
         
+            
            <button mat-icon-button class="text-black">
-            <mat-icon aria-hidden="false" 
+                <mat-icon aria-hidden="false" 
                     aria-label="Example home icon" 
                     fontIcon="notifications_unread">
-            </mat-icon>        
-        </button>
-        <button mat-icon-button class="text-black">
-            <mat-icon aria-hidden="false" 
+                </mat-icon>        
+            </button>
+            <button mat-icon-button class="text-black">
+                <mat-icon aria-hidden="false" 
                     aria-label="Example home icon" 
                     fontIcon="logout">
-            </mat-icon>        
-        </button>
+                </mat-icon>        
+            </button>
      
     </div>
 </header>

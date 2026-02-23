@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Account } from '../models/Account.model';
-import { Transactions } from '../models/transactions.model';
+import { Account } from '../../main-panel/pages/dashboard/models/account.model';
+import { Transactions } from '../../main-panel/pages/dashboard/models/transactions.model';
 
 
 @Injectable({

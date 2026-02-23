@@ -1,7 +1,7 @@
 <div class="div-pai">
 
     <div class="welcome">
-            <h1>Bem-vindo, {{ account?.name }}!</h1>
+            <mat-card-title class="mb-4 fs-3">Bem-vindo, {{ account?.name }}!</mat-card-title>            
     </div>
     
     <div class="saldo">
@@ -18,8 +18,8 @@
         <div>
             <mat-card appearance="outlined">
                 <mat-card-header class="mb-30">
-                    <mat-card-title class="mb-30">Receitas</mat-card-title>
-                    <mat-card-subtitle class="fz-20">R$ 4.500,00</mat-card-subtitle>
+                    <mat-card-title class="mb-30">Receitas</mat-card-title>                    
+                    <mat-card-subtitle class="fz-20">{{ account?.balance }}</mat-card-subtitle>
                 </mat-card-header>
             
             </mat-card>
@@ -28,7 +28,7 @@
             <mat-card appearance="outlined">
                 <mat-card-header class="mb-30">
                     <mat-card-title class="mb-30">Despesas</mat-card-title>
-                    <mat-card-subtitle class="fz-20 fc-red">-R$ 1.720,00</mat-card-subtitle>
+                    <mat-card-subtitle class="fz-20 fc-red">-R$ {{ account?.balance }}</mat-card-subtitle>
                 </mat-card-header>
             
             </mat-card>
@@ -38,7 +38,7 @@
 
     <div>
         <div class="mt-40">
-            <h1>Últimas Transações</h1>
+            <mat-card-title class="mb-4 fs-3">Últimas Transações</mat-card-title>            
         </div>
         
         <mat-card appearance="outlined" class="mt-40">
@@ -51,7 +51,7 @@
     
                     <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef>Data</th>
-                        <td mat-cell *matCellDef="let transactions">{{ transactions.date }}</td>
+                        <td mat-cell *matCellDef="let transactions">{{ transactions.date | date: 'dd/MM/yyyy'}}</td>
                     </ng-container>
     
                     <ng-container matColumnDef="description">
@@ -61,7 +61,7 @@
     
                     <ng-container matColumnDef="amount">
                         <th mat-header-cell *matHeaderCellDef>Valor</th>
-                        <td mat-cell *matCellDef="let transactions">{{ transactions.amount }}</td>
+                        <td mat-cell *matCellDef="let transactions" [class]="transactions.amount  | negativeValues">{{ transactions.amount | currency: "BRL" : "symbol" : "1.2-2" }}</td>
                     </ng-container>
     
                     <tr mat-header-row *matHeaderRowDef="colunasTabela" ></tr>
@@ -70,8 +70,8 @@
                 </table>
             </mat-card-content>
 
-            <div class="ver-tudo mt-40">
-                <button mat-button>Ver tudo</button>               
+            <div class="mt-30 d-flex justify-content-center align-items-center">
+                <button class="px-4 mx-5 mb-4 fs-5" mat-stroked-button>Ver tudo</button>               
             </div>
                      
             

@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="example-button-row mt-4 d-flex justify-content-center align-items-center ">
+        <button class="py-4 px-4 fs-5" mat-flat-button (click)="redirectToCreate()">Adicionar Transação</button>    
+    </div>
+    
+    <div>
+        @if (showCreateForm) {
+            <app-create-transaction></app-create-transaction>
+        } @else {
+            <app-list-transaction></app-list-transaction>
+        }
+    </div>
+</div>
+
+

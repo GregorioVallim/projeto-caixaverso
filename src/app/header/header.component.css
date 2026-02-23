@@ -17,6 +17,13 @@
 .welcome {
     color: #000;
     font-size: 24px;
+    display: flex;
+    
+    align-items: center;
+}
+
+.conta {
+    text-align: center;
 }
 
 img {
