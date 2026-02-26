@@ -1,12 +1,12 @@
 aside {
     height: 100vh;
-    background: #ccc;    
+    background: #3a3d4d;    
     padding: 24px 24px;
 }
 
 .logo {
     padding: 12px;
-    color: #000;
+    color: #fff;
     font-size: 24px;
     display: flex;
     justify-content: center;
@@ -15,6 +15,9 @@ aside {
 button {
     padding: 10px;
 }
+
+
+
 
 
 

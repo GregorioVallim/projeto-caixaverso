@@ -1,17 +1,20 @@
-@switch (page) {
-    @case (pagesEnum.DASHBOARD){
-        <app-dashboard></app-dashboard>
+<div class="container">
+    @switch (page) {
+        @case (pagesEnum.DASHBOARD){
+            <app-dashboard></app-dashboard>
+        }
+        @case (pagesEnum.TRANSACTIONS){
+            <app-transactions></app-transactions>       
+        }
+        @case (pagesEnum.TRANSFER){
+            <app-transfer></app-transfer>      
+        }
+        @case (pagesEnum.CREDIT){
+            <app-credit-simulator></app-credit-simulator>     
+        }
     }
-    @case (pagesEnum.TRANSACTIONS){
-        <app-transactions></app-transactions>       
-    }
-    @case (pagesEnum.TRANSFER){
-        <app-transfer></app-transfer>      
-    }
-    @case (pagesEnum.CREDIT){
-        <app-credit-simulator></app-credit-simulator>     
-    }
-}
+</div>
+
 
 
 

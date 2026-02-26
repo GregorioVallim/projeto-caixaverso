@@ -6,7 +6,7 @@
 
 
 .header {
-    background: #ccc;
+    background: #3a3d4d;
     padding: 10px 24px;
     display: flex;
     justify-content: space-between;
@@ -15,7 +15,7 @@
 }
 
 .welcome {
-    color: #000;
+    color: #fff;
     font-size: 24px;
     display: flex;
     
