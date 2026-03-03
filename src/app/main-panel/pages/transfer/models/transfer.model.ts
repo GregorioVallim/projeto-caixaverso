@@ -6,9 +6,10 @@ export interface Transfer {
     id: string;
     agencia: number;
     conta: number;
-    tipoPessoa: TipoPessoa;
+    tipoPessoa: string;
     nome: string;
     cpf: number;    
+    cnpj: number;    
     date: string;
     description: string;
     amount: number;

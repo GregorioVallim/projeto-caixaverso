@@ -14,6 +14,10 @@ export class TransfersService {
 
   createTransfer(transfer: Transfer): Observable<void> {
         return this.http.post<void>(`${this.apiUrl}/transfers`, transfer);
-    }
+  }
+
+  deleteTransfer(id: string): Observable<void> {
+      return this.http.delete<void>(`${this.apiUrl}/transfers/${id}`);
+  }
 
 }

@@ -1,1 +1,143 @@
-<p>credit-simulator works!</p>
+<!-- 
+<div>
+    <div class="pai p-5">
+        
+        <mat-card appearance="outlined" class="mt-40 p-5">          
+
+            <mat-card-title class="mb-4 fs-2">Empréstimo:</mat-card-title>                        
+
+            <mat-form-field appearance="outline" class="mt-3">
+                <mat-label for="valor">Informe o valor desejado:</mat-label>
+                <input type="number" id="valor" matInput [(ngModel)]="valor" >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="mt-3">
+                <mat-label for="parcelas">Quantas prestações você deseja fazer:</mat-label>
+                <input type="number" matInput [(ngModel)]="parcela">
+            </mat-form-field>
+
+            <div class="mt-3">
+                <button class="px-4 fs-5" type="button" mat-stroked-button (click)="calcularPrestacao(valor, parcela)">Simular</button>            
+            </div>      
+            
+            @if (prestacao) {
+                <mat-card-title class="mt-5 mb-4 fs-4">Valor da Prestação: R$ {{prestacao.toFixed(2)}}  </mat-card-title>
+                <mat-card-title class="mt-5 mb-4 fs-4">Valor Total: R$ {{(prestacao * parcela).toFixed(2)}}  </mat-card-title>
+            }
+
+        </mat-card>
+       
+    </div>
+</div> -->
+
+
+
+<div class="pai p-5" >
+   
+
+      <mat-card appearance="outlined" class="mt-40  p-5">
+
+        <mat-card-title class="mb-4 fs-2">Simule o seu Empréstimo:</mat-card-title>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Escolha uma opção</mat-label>
+          <mat-select [(ngModel)]="selectedOption">
+            <mat-option value="input1">CDC Salário</mat-option>
+            <mat-option value="input2">CDC Automático</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+         <mat-card appearance="outlined" class="mt-40 p-5" *ngIf="selectedOption === 'input1'">          
+
+            <mat-card-title class="mb-4 fs-2">CDC Salário:</mat-card-title>                        
+
+            <mat-form-field appearance="outline" class="mt-3">
+                <mat-label for="valor">Informe o valor desejado:</mat-label>
+                <input type="number" id="valor" matInput [(ngModel)]="valor" >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="mt-3">
+                <mat-label for="parcelas">Quantas prestações você deseja fazer:</mat-label>
+                <input type="number" matInput [(ngModel)]="parcela">
+            </mat-form-field>
+
+            <div class="mt-3 d-flex justify-content-center align-items-center">
+                <button class="px-4 fs-5" type="button" mat-stroked-button (click)="calcularPrestacao(valor, parcela)">Simular</button>            
+            </div>      
+            
+            @if (prestacao) {
+
+                <div class="saldo">
+                    <div>
+                        <mat-card appearance="outlined" class="ps-3 pt-2 mb-2">
+                            <mat-card-header class="mb-30 p-5">
+                                <mat-card-title class="mb-30">Valor Total:</mat-card-title>
+                                <mat-card-subtitle class="fz-20"> R$ {{(prestacao * parcela).toFixed(2)}}</mat-card-subtitle>
+                            </mat-card-header>
+                
+                        </mat-card>
+                    </div>
+
+                    <div>
+                        <mat-card appearance="outlined" class="ps-3 pt-2 mb-2">
+                            <mat-card-header class="mb-30 p-5">
+                                <mat-card-title class="mb-30">Valor da Prestação:</mat-card-title>                    
+                                <mat-card-subtitle class="fz-20"> R$ {{prestacao.toFixed(2)}}</mat-card-subtitle>
+                            </mat-card-header>                
+                        </mat-card>
+                    </div>   
+                </div>                
+            }
+
+        </mat-card>
+
+        <mat-card appearance="outlined" class="mt-40 p-5" *ngIf="selectedOption === 'input2'">          
+
+            <mat-card-title class="mb-4 fs-2">CDC Automático:</mat-card-title>                        
+
+            <mat-form-field appearance="outline" class="mt-3">
+                <mat-label for="valor">Informe o valor desejado:</mat-label>
+                <input type="number" id="valor" matInput [(ngModel)]="valor" >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="mt-3">
+                <mat-label for="parcelas">Quantas prestações você deseja fazer:</mat-label>
+                <input type="number" matInput [(ngModel)]="parcela">
+            </mat-form-field>
+
+            <div class="mt-3 d-flex justify-content-center align-items-center">
+                <button class="px-4 fs-5" type="button" mat-stroked-button (click)="calcularPrestacao(valor, parcela)">Simular</button>            
+            </div>      
+            
+            @if (prestacao) {
+
+                <div class="saldo">
+                    <div>
+                        <mat-card appearance="outlined" class="ps-3 pt-2 mb-2">
+                            <mat-card-header class="mb-30 p-5">
+                                <mat-card-title class="mb-30">Valor Total:</mat-card-title>
+                                <mat-card-subtitle class="fz-20"> R$ {{(prestacao * parcela).toFixed(2)}}</mat-card-subtitle>
+                            </mat-card-header>
+                
+                        </mat-card>
+                    </div>
+
+                    <div>
+                        <mat-card appearance="outlined" class="ps-3 pt-2 mb-2">
+                            <mat-card-header class="mb-30 p-5">
+                                <mat-card-title class="mb-30">Valor da Prestação:</mat-card-title>                    
+                                <mat-card-subtitle class="fz-20"> R$ {{prestacao.toFixed(2)}}</mat-card-subtitle>
+                            </mat-card-header>                
+                        </mat-card>
+                    </div>   
+                </div>                
+            }
+
+        </mat-card>
+
+      </mat-card>
+
+     
+    
+</div>
+

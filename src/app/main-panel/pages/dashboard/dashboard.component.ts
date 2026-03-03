@@ -11,25 +11,44 @@ import { Transactions } from './models/transactions.model';
 import { RouterService } from '../../../core/service/router.service';
 import { TransactionPagesEnum } from '../../../constants/transaction-pages.enum';
 import { Pages} from '../../../constants/pages.enum';
+import { BehaviorSubject } from 'rxjs';
+import { MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatCardModule, MatTableModule, MatButtonModule, CommonModule, CurrencyPipe, NegativeValuesPipe],
+  imports: [MatCardModule, 
+            MatTableModule, 
+            MatButtonModule, 
+            CommonModule, 
+            CurrencyPipe, 
+            NegativeValuesPipe, 
+            MatInputModule,
+            MatFormFieldModule,
+            FormsModule
+          ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
   private readonly dashboardService = inject(DashboardService);
   private readonly routerService = inject(RouterService);
+  private valorSubject = new BehaviorSubject<number | null>(null);
 
+  account2$ = this.valorSubject.asObservable();
+  
   account?: Account;
+  newBalance?: Account;
+  calculator: number = 0;
   transactions?: any;  
   transctionPagesEnum = TransactionPagesEnum;
   pagesEnum = Pages;
-  somaTransactions: Transactions[] = [];
+  searchTransactions: string = '';
 
-  colunasTabela: string[] = ["date", "description", "amount"];
+  colunasTabela: string[] = ["id", "date", "description", "amount"];
 
    redirectToPage(page: Pages): void {
     this.routerService.setCurrentPage(page);
@@ -42,6 +61,14 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getAccount();
+    this.getTransactions();   
+    
+    // this.getAccountValue();    
+    
+  }
+
+  getAccount (): void {
     this.dashboardService.getAccount().pipe(first()).subscribe({
       next: (res: Account) => {
         this.account = res;            
@@ -50,7 +77,9 @@ export class DashboardComponent implements OnInit {
         console.log(err);
       },
     });
+  }
 
+  getTransactions (): void {
     this.dashboardService.getTransactions().pipe(first()).subscribe({
       next: (res: Transactions) => {
         this.transactions = res;                
@@ -59,15 +88,72 @@ export class DashboardComponent implements OnInit {
         console.log(err);
       },
     })
-
-    //  if(this.transactions.amount > 0) {
-    //       this.soma = this.soma + this.transactions.amount;
-    //       console.log(this.soma);
-    //     } 
-    //     this.soma = this.transactions.amount < 0 ? this.soma = this.soma + this.transactions.amount : 1; 
   }
 
-  // Soma(soma: number): number {
+  filterTransactions() : Transactions[] {
+    return this.transactions.filter((item: Transactions) =>
+       item.description.toLowerCase().includes(this.searchTransactions.toLowerCase()))
+  }
+
+
+  getAccountValue (): any {
+    this.dashboardService.getAccount().pipe(first()).subscribe({
+      next: (res: Account) => {
+        this.valorSubject.next(res.balance);
+        
+        console.log(this.valorSubject);
+        const valorAtual = this.valorSubject.getValue();
+        if (valorAtual !== null) {
+            let numero: number = valorAtual; // agora é garantidamente um inteiro
+            console.log('Número pronto para enviar:', numero);
+            numero = numero + 20000;
+            console.log('Número pronto para enviar:', numero);
+            this.saveBalance(numero);
+        }
+
+        
+                 
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });    
+  }
+
+  fazerSoma(): number | null {
+    const valor = this.valorSubject.getValue();
+    return valor !== null ? valor + 5000 : null;     
+  }
+
+  
+
+  saveBalance(valor : number): void {
+    this.dashboardService
+      .updateBalanceAccount("1154", valor)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          console.log("Sucesso");                  
+        },
+        error: (err) => {
+          console.log(err);        
+        },
+      });    
+  }
+  // CalculatorBalance() {
+  //   this.getAccount(); 
+  //   let soma: number;
+  //   this.calculator?.balance = this.account?.balance;
+     
+      
+      
+  //    }
+  // }
+
+
+
+
+  // Soma(): number {
   //   this.dashboardService
   //     .getTransactions()
   //     .pipe(first())

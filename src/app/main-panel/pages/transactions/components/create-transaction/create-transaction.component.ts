@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -16,6 +16,8 @@ import { DashboardService } from '../../../../../core/service/dashboard.service'
 import { Account } from '../../../dashboard/models/account.model';
 import { RouterService } from '../../../../../core/service/router.service';
 import { TransactionPagesEnum } from '../../../../../constants/transaction-pages.enum';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+
 
 @Component({
   selector: 'app-create-transaction',
@@ -28,14 +30,14 @@ import { TransactionPagesEnum } from '../../../../../constants/transaction-pages
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
+    NgxMaskDirective    
   ],
   templateUrl: './create-transaction.component.html',
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter(), provideNgxMask()],
   styleUrl: './create-transaction.component.css'
 })
 export class CreateTransactionComponent implements OnInit {
-  private readonly transactionsService = inject(TransactionsService);
-  private readonly dashboardService = inject(DashboardService);
+  private readonly transactionsService = inject(TransactionsService);  
   private readonly routerService = inject(RouterService);
 
   @Input() id?: string;
@@ -54,10 +56,10 @@ export class CreateTransactionComponent implements OnInit {
 
   buildForm(): void {
     this.form = new FormGroup({
-      date: new FormControl(),
-      description: new FormControl(),
-      amount: new FormControl(),
-      type: new FormControl(),
+      date: new FormControl(null, Validators.required),
+      description: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      amount: new FormControl(null, Validators.required),
+      type: new FormControl(null, Validators.required),
       deletando: new FormControl(false)      
     });
   }

@@ -76,6 +76,7 @@ export class ListTransactionComponent implements OnInit{
           console.log(err);
         },
       });
+      
       this.snack.open('Transação excluída com sucesso!', 'OK');
     }
 

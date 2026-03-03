@@ -7,16 +7,16 @@
     <div class="saldo">
     
         <div>
-            <mat-card appearance="outlined">
+            <mat-card appearance="outlined" class="ps-3 pt-2">
                 <mat-card-header class="mb-30">
                     <mat-card-title class="mb-30">Saldo em Conta</mat-card-title>
-                    <mat-card-subtitle class="fz-20">R$ {{ account?.balance }}</mat-card-subtitle>
+                    <mat-card-subtitle class="fz-20">R$ {{ account?.balance}}</mat-card-subtitle>
                 </mat-card-header>
             
             </mat-card>
         </div>    
         <div>
-            <mat-card appearance="outlined">
+            <mat-card appearance="outlined" class="ps-3 pt-2">
                 <mat-card-header class="mb-30">
                     <mat-card-title class="mb-30">Receitas</mat-card-title>                    
                     <mat-card-subtitle class="fz-20">R$ {{ account?.balance }}</mat-card-subtitle>
@@ -25,7 +25,7 @@
             </mat-card>
         </div>    
         <div>
-            <mat-card appearance="outlined">
+            <mat-card appearance="outlined" class="ps-3 pt-2">
                 <mat-card-header class="mb-30">
                     <mat-card-title class="mb-30">Despesas</mat-card-title>
                     <mat-card-subtitle class="fz-20 fc-red">-R$ {{ account?.balance }}</mat-card-subtitle>
@@ -40,14 +40,18 @@
         <div class="mt-40">
             <mat-card-title class="mb-4 fs-3">Últimas Transações</mat-card-title>            
         </div>
-        
+                
         <mat-card appearance="outlined" class="mt-40">
-            <mat-card-content>
-                <table mat-table [dataSource]="transactions">
-                    <!-- <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef>id</th>
-                        <td mat-cell *matCellDef="let transactions">{{ transactions.id }}</td>
-                    </ng-container> -->
+            <mat-form-field appearance="outline" class="mt-3 p-4">
+                    <mat-label >Buscar</mat-label>
+                    <input type="text" matInput [(ngModel)]="searchTransactions">
+            </mat-form-field>
+            <mat-card-content class="m-3">
+                <table mat-table [dataSource]="filterTransactions()">
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let transactions"></td>
+                    </ng-container>
     
                     <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef>Data</th>
@@ -71,7 +75,7 @@
             </mat-card-content>
 
             <div class="mt-30 d-flex justify-content-center align-items-center">
-                <button class="px-4 mx-5 mb-4 fs-5" mat-stroked-button (click)="redirectToPage(pagesEnum.TRANSACTIONS)">Ver tudo</button>               
+                <button class="px-4 mx-5 m-4 fs-5" mat-stroked-button (click)="redirectToPage(pagesEnum.TRANSACTIONS)">Ver tudo</button>               
             </div>
                      
             
