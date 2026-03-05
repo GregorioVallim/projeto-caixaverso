@@ -36,18 +36,13 @@ imprime: number = 0;
 
 calcularPrestacao(valorPrincipal: number, numeroParcelas: number) {
     // Converte a taxa de porcentagem para decimal (ex: 2% -> 0.02)
-    let i = this.taxa / 100;
-    
+    let i = this.taxa / 100;    
     
     // Fórmula de juros compostos para prestações fixas (Price)
     this.prestacao = (valorPrincipal * i) / (1 - Math.pow(1 + i, -numeroParcelas));
 
     console.log(this.prestacao);
-    console.log(this.prestacao * numeroParcelas);  
-   
-    
-    return this.prestacao.toFixed(2);
-     // Retorna com 2 casas decimais
+    console.log(this.prestacao * numeroParcelas);     
 }
 
 // Exemplo: R$ 10.000,00, 2% ao mês, 12 parcelas

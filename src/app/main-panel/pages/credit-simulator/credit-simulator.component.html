@@ -42,14 +42,14 @@
         <mat-form-field appearance="outline">
           <mat-label>Escolha uma opção</mat-label>
           <mat-select [(ngModel)]="selectedOption">
-            <mat-option value="input1">CDC Salário</mat-option>
-            <mat-option value="input2">CDC Automático</mat-option>
+            <mat-option value="input1">Empréstimo Pessoal</mat-option>
+            <mat-option value="input2">Consignado</mat-option>
           </mat-select>
         </mat-form-field>
 
          <mat-card appearance="outlined" class="mt-40 p-5" *ngIf="selectedOption === 'input1'">          
 
-            <mat-card-title class="mb-4 fs-2">CDC Salário:</mat-card-title>                        
+            <mat-card-title class="mb-4 fs-2">Empréstimo Pessoal:</mat-card-title>                        
 
             <mat-form-field appearance="outline" class="mt-3">
                 <mat-label for="valor">Informe o valor desejado:</mat-label>
@@ -91,9 +91,11 @@
 
         </mat-card>
 
+        
+
         <mat-card appearance="outlined" class="mt-40 p-5" *ngIf="selectedOption === 'input2'">          
 
-            <mat-card-title class="mb-4 fs-2">CDC Automático:</mat-card-title>                        
+            <mat-card-title class="mb-4 fs-2">Consignado:</mat-card-title>                        
 
             <mat-form-field appearance="outline" class="mt-3">
                 <mat-label for="valor">Informe o valor desejado:</mat-label>
