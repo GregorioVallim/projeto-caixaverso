@@ -17,6 +17,7 @@ import { Account } from '../../../dashboard/models/account.model';
 import { RouterService } from '../../../../../core/service/router.service';
 import { TransactionPagesEnum } from '../../../../../constants/transaction-pages.enum';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -30,7 +31,7 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
-    NgxMaskDirective    
+    NgxMaskDirective   
   ],
   templateUrl: './create-transaction.component.html',
   providers: [provideNativeDateAdapter(), provideNgxMask()],
@@ -39,6 +40,8 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 export class CreateTransactionComponent implements OnInit {
   private readonly transactionsService = inject(TransactionsService);  
   private readonly routerService = inject(RouterService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
   @Input() id?: string;
 
@@ -49,9 +52,14 @@ export class CreateTransactionComponent implements OnInit {
 
   ngOnInit(): void {
    this.buildForm();
-   if (this.id){
-    this.getTransactionById();
-   }
+   this.route.queryParamMap.subscribe( (query: any) => {
+    const params = query['params'];
+    this.id = params['id'];
+  })
+  if (this.id){
+    this.getTransactionById(this.id);
+  }
+
   }
 
   buildForm(): void {
@@ -64,9 +72,9 @@ export class CreateTransactionComponent implements OnInit {
     });
   }
 
-  getTransactionById(): void {
+  getTransactionById(id : string): void {
     this.transactionsService
-    .getTransactionById(this.id!)
+    .getTransactionById(id)
     .pipe(first())
     .subscribe({
       next: (transaction) => {
@@ -121,7 +129,7 @@ export class CreateTransactionComponent implements OnInit {
   }
 
    backToList(): void {
-    this.routerService.setTransactionPage(TransactionPagesEnum.LIST);
+    this.router.navigate(['/transactions/list']);
   }
 
   // this.dashboardService.getAccount().pipe(first()).subscribe({

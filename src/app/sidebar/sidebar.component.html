@@ -7,14 +7,45 @@
         </a> -->
     </div>
   
-    <div class="mt-5">
-      @for (item of menuItems; track $index) {
-        <div class="my-4">
-          <button mat-flat-button (click)="redirectToPage(item.page)" class="w-100 py-4 fs-4"  >
-            {{ item.label }}
+    <!-- <div class="mt-5"> -->
+      
+        <!-- <div class="my-4">
+          <button mat-flat-button routerLink="/dashboard" routerLinkActive="active" class="w-100 py-4 fs-5"  >
+            DASHBOARD
           </button>
         </div>
+
+        <div class="my-4">
+          <button mat-flat-button routerLink="/transactions" routerLinkActive="active" class="w-100 py-4 fs-5"  >
+            EXTRATO
+          </button>
+        </div>
+
+        <div class="my-4">
+          <button mat-flat-button routerLink="/transfer" routerLinkActive="active" class="w-100 py-4 fs-5"  >
+            TRANSFERÊNCIAS
+          </button>
+        </div>
+
+        <div class="my-4">
+          <button mat-flat-button routerLink="/credit" routerLinkActive="active" class="w-100 py-4 fs-5"  >
+            CRÉDITO
+          </button>
+        </div>
+       -->
+
+       <div class="mt-5 ">
+      @for (item of menuItems; track $index) {
+        <div class="my-4">
+          <button mat-flat-button [routerLink]="`/${item.page}`" routerLinkActive="active" class="w-100 py-4 fs-4"  >
+            
+            {{ item.label }}
+            <mat-icon fontIcon={{item.icon}}></mat-icon>
+          </button>
+          
+        </div>
       }
+     
     </div>
   
 </aside>

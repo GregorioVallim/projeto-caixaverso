@@ -5,10 +5,11 @@ import { ListTransactionComponent } from './components/list-transaction/list-tra
 import { RouterService } from '../../../core/service/router.service';
 import { TransactionPagesEnum } from '../../../constants/transaction-pages.enum';
 import { AsyncPipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-transactions',
-  imports: [MatButtonModule, CreateTransactionComponent, ListTransactionComponent, AsyncPipe],
+  imports: [MatButtonModule, RouterModule],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
@@ -17,12 +18,12 @@ export class TransactionsComponent {
 
   id?: string;
 
-  page$ = this.routerService.getTransactionPage();
-  pagesEnum = TransactionPagesEnum;
+  // page$ = this.routerService.getTransactionPage();
+  // pagesEnum = TransactionPagesEnum;
 
-  handleEditTransaction(id: string): void{
-    this.id = id;
-    this.routerService.setTransactionPage(TransactionPagesEnum.EDIT);
-  }
+  // handleEditTransaction(id: string): void{
+  //   this.id = id;
+  //   this.routerService.setTransactionPage(TransactionPagesEnum.EDIT);
+  // }
 
 }

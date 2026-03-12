@@ -5,23 +5,24 @@ import { CreditSimulatorComponent } from './pages/credit-simulator/credit-simula
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { TransferComponent } from './pages/transfer/transfer.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-main-panel',
-  imports: [ DashboardComponent, TransactionsComponent, TransferComponent, CreditSimulatorComponent ],
+  imports: [ RouterModule ],
   templateUrl: './main-panel.component.html',
   styleUrl: './main-panel.component.css'
 })
-export class MainPanelComponent implements OnInit {
-  private readonly routerService = inject(RouterService);
+export class MainPanelComponent {
+  // private readonly routerService = inject(RouterService);
   
-  page!: Pages;
-  pagesEnum = Pages;  
+  // page!: Pages;
+  // pagesEnum = Pages;  
 
-  ngOnInit(): void {  
-    this.routerService.getCurrentPage().subscribe((page: Pages) =>{
-      this.page = page;
-    });
+  // ngOnInit(): void {  
+  //   this.routerService.getCurrentPage().subscribe((page: Pages) =>{
+  //     this.page = page;
+  //   });
     
-  }
+  // }
 }

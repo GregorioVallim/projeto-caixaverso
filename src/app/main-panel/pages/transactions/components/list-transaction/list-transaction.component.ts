@@ -13,6 +13,7 @@ import { TransactionPagesEnum } from '../../../../../constants/transaction-pages
 import { MatIcon } from "@angular/material/icon";
 import { TransactionsService } from '../../../../../core/service/transactions.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-transaction',
@@ -24,6 +25,8 @@ export class ListTransactionComponent implements OnInit{
   private readonly dashboardService = inject(DashboardService);
   private readonly routerService = inject(RouterService);
   private readonly transactionsService = inject(TransactionsService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
   @Output() editEmitter = new EventEmitter<string>();
 
@@ -53,11 +56,12 @@ export class ListTransactionComponent implements OnInit{
     }
 
     redirectToCreate(): void {
-      this.routerService.setTransactionPage(TransactionPagesEnum.CREATE);
+      this.router.navigate(['/transactions/create']);
     }
 
     onEdit(id: string) : void {
-      this.editEmitter.emit(id);
+      this.router.navigate(['/transactions/create'], { queryParams: { "id": id }});
+      // this.editEmitter.emit(id);
     }
 
     prepararadelete(transaction: Transactions) {

@@ -1,8 +1,10 @@
-<div class="example-button-row mt-5 d-flex justify-content-center align-items-center ">
-    <button class="py-4 px-4 fs-5" mat-flat-button (click)="backToList()">Voltar</button>    
-</div>
 
-<div class="pai mt-5">
+
+<div class="pai">
+    <div class="mt-4 mb-5 example-button-row d-flex justify-content-center align-items-center ">
+        <button class="py-4 px-4 fs-5 py-4" mat-flat-button (click)="backToList()">Voltar</button>    
+    </div>
+
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-card appearance="outlined" class="mt-40 p-5" >
             <mat-card-title class="mb-4 fs-3">Cadastre a Transação</mat-card-title>

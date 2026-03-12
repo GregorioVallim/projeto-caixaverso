@@ -15,6 +15,7 @@ import { BehaviorSubject } from 'rxjs';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -36,8 +37,11 @@ import { FormsModule } from '@angular/forms';
 export class DashboardComponent implements OnInit {
   private readonly dashboardService = inject(DashboardService);
   private readonly routerService = inject(RouterService);
-  private valorSubject = new BehaviorSubject<number | null>(null);
+  
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
+  private valorSubject = new BehaviorSubject<number | null>(null);
   account2$ = this.valorSubject.asObservable();
   
   account?: Account;
@@ -51,20 +55,20 @@ export class DashboardComponent implements OnInit {
   colunasTabela: string[] = ["id", "date", "description", "amount"];
 
    redirectToPage(page: Pages): void {
-    this.routerService.setCurrentPage(page);
-    this.backToList();
+    this.router.navigate(['/transactions/list']);
+    
   }
 
-   backToList(): void {
-      this.routerService.setTransactionPage(TransactionPagesEnum.LIST);
-    }
+  //  backToList(): void {
+  //     this.routerService.setTransactionPage(TransactionPagesEnum.LIST);
+  //   }
 
 
   ngOnInit(): void {
     this.getAccount();
     this.getTransactions();   
     
-    // this.getAccountValue();    
+    this.getAccountValue();    
     
   }
 
@@ -97,22 +101,25 @@ export class DashboardComponent implements OnInit {
 
 
   getAccountValue (): any {
+    const acc = this.valorSubject.getValue();
+    console.log(acc);
+    
+
     this.dashboardService.getAccount().pipe(first()).subscribe({
       next: (res: Account) => {
         this.valorSubject.next(res.balance);
         
         console.log(this.valorSubject);
         const valorAtual = this.valorSubject.getValue();
+
+
         if (valorAtual !== null) {
             let numero: number = valorAtual; // agora é garantidamente um inteiro
             console.log('Número pronto para enviar:', numero);
             numero = numero + 20000;
             console.log('Número pronto para enviar:', numero);
             this.saveBalance(numero);
-        }
-
-        
-                 
+        }                 
       },
       error: (err) => {
         console.log(err);
@@ -120,16 +127,13 @@ export class DashboardComponent implements OnInit {
     });    
   }
 
-  fazerSoma(): number | null {
-    const valor = this.valorSubject.getValue();
-    return valor !== null ? valor + 5000 : null;     
-  }
+ 
 
   
 
-  saveBalance(valor : number): void {
-    this.dashboardService
-      .updateBalanceAccount("1154", valor)
+  saveBalance(valor: number): void {
+   this.dashboardService
+      .updateBalanceAccount({balance: valor })
       .pipe(first())
       .subscribe({
         next: () => {
@@ -172,7 +176,10 @@ export class DashboardComponent implements OnInit {
   //   }
   // }
 
-
+//  fazerSoma(): number | null {
+//     const valor = this.valorSubject.getValue();
+//     return valor !== null ? valor + 5000 : null;     
+//   }
   
 
   

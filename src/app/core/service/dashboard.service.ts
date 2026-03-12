@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from '../../main-panel/pages/dashboard/models/account.model';
 import { Transactions } from '../../main-panel/pages/dashboard/models/transactions.model';
+import { catchError, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -17,8 +18,9 @@ export class DashboardService {
     return this.http.get<Account>(`${this.apiUrl}/account`);
   }
 
-  updateBalanceAccount( id: string, balance: number): Observable<any> {
-    return this.http.patch<any>(`${this.apiUrl}/account/${id}`, balance );
+  updateBalanceAccount( account: Partial<Account>): Observable<Account> {
+    return this.http
+    .patch<Account>(`${this.apiUrl}/account`, account )
   }
 
   // updateTransaction(transaction: Transactions, id: string): Observable<void> {
