@@ -10,26 +10,28 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DashboardService {
-  private readonly http = inject(HttpClient);
+  // private readonly http = inject(HttpClient);
 
-  apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000/account';
+
+  constructor(private http: HttpClient) {}
 
   getAccount(): Observable<Account> {
-    return this.http.get<Account>(`${this.apiUrl}/account`);
+    return this.http.get<Account>(`${this.apiUrl}`);
   }
 
   updateBalanceAccount( account: Partial<Account>): Observable<Account> {
     return this.http
-    .patch<Account>(`${this.apiUrl}/account`, account )
+    .patch<Account>(`${this.apiUrl}`, account )
   }
 
   // updateTransaction(transaction: Transactions, id: string): Observable<void> {
   //     return this.http.put<void>(`${this.apiUrl}/transactions/${id}`, transaction);
   // }
 
-  getTransactions(): Observable<Transactions> {
-    return this.http.get<Transactions>(`${this.apiUrl}/transactions`);
-  }
+  // getTransactions(): Observable<Transactions[]> {
+  //   return this.http.get<Transactions[]>(`${this.apiUrl}/transactions`);
+  // }
 
   
   

@@ -130,7 +130,7 @@ export class CreateTransactionComponent implements OnInit {
   }
 
    backToList(): void {
-    this.router.navigate(['/transactions/list']);
+    this.router.navigate(['/transactions']);
   }
 
   // this.dashboardService.getAccount().pipe(first()).subscribe({

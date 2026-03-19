@@ -6,7 +6,51 @@
         <mat-card appearance="outlined" class="mt-40 p-3">
             <mat-card-title class="mb-4 mt-4 mx-5 fs-3">Extrato</mat-card-title>
             <mat-card-content>
-                <table mat-table [dataSource]="transactions">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Data</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of transactions(); track $index) {
+                            <tr>
+                                <td>{{ item.date | date: "dd/MM/yyyy" }}</td>
+                                <td>{{ item.description }}</td>
+                                <td [class]="item.amount | negativeValues">
+                                    {{ item.amount | currency: "BRL" : "symbol" : "1.2-2" : "pt-BR" }}
+                                </td>
+                                <td>
+                                    {{
+                                        item.type === transactionsTypesEnum.INCOME ? "Entrada" : "Saída"
+                                    }}
+                                </td>
+                                <td>
+                                    <button type="button" mat-button (click)="onEdit(item.id)">
+                                        <mat-icon fontIcon="edit"></mat-icon>
+                                        Editar
+                                    </button>                                    
+                                    @if (!transactions()[$index].deletando) {
+                                        <button type="button" mat-button (click)="prepararadelete(transactions()[$index])">
+                                            <mat-icon fontIcon="delete"></mat-icon>
+                                            Excluir
+                                        </button>
+                                    } @else {
+                                        <button type="button" mat-button (click)="onDelete(transactions()[$index])">
+                                            <mat-icon fontIcon="question_mark"></mat-icon>
+                                            Confirma
+                                        </button>                                    
+                                    }                                    
+                                </td>
+                            </tr>
+                        }
+                     </tbody>
+                </table>
+                <!-- <table mat-table [dataSource]="transactions">
 
                     <ng-container matColumnDef="id">
                         <th mat-header-cell *matHeaderCellDef></th>
@@ -65,7 +109,7 @@
                     <tr mat-header-row *matHeaderRowDef="colunasTabela" ></tr>
                     <tr mat-row *matRowDef="let row; columns: colunasTabela"></tr>
     
-                </table>
+                </table> -->
             </mat-card-content>
 
             <!-- <div class="mt-30 d-flex justify-content-center align-items-center">

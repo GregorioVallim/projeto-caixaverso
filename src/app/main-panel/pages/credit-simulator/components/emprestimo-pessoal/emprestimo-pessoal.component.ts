@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-emprestimo-pessoal',
@@ -13,16 +14,18 @@ import { MatSelectModule } from '@angular/material/select';
             MatInputModule, 
             MatButtonModule, 
             MatSelectModule,
-            FormsModule
+            FormsModule, 
+            CommonModule,            
           ],
   templateUrl: './emprestimo-pessoal.component.html',
   styleUrl: './emprestimo-pessoal.component.css'
 })
 export class EmprestimoPessoalComponent {
+    loanLimit = signal(20000);
     valor: number = 0;
     parcela: number = 0;
     prestacao: number = 0;
-    taxa: number = 2;
+    taxa: number = 2.99;
 
     calcularPrestacao(valorPrincipal: number, numeroParcelas: number) {
     // Converte a taxa de porcentagem para decimal (ex: 2% -> 0.02)

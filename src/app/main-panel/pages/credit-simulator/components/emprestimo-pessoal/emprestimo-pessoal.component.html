@@ -1,6 +1,10 @@
 <mat-card appearance="outlined" class="mt-40 p-5">          
 
-            <mat-card-title class="mb-4 fs-2">Empréstimo Pessoal:</mat-card-title>                        
+            <mat-card-title class="mb-4 fs-2">Empréstimo Pessoal:</mat-card-title> 
+            
+            <mat-card-title class="mb-4 taxa fs-4">Limite Disponível: {{ loanLimit() | currency: "BRL" : "symbol" : "1.2-2" : "pt-BR" }}</mat-card-title> 
+            
+            <mat-card-title class="mb-4 taxa">Taxa de juros é {{ taxa }}% ao mês</mat-card-title>
 
             <mat-form-field appearance="outline" class="mt-3">
                 <mat-label for="valor">Informe o valor desejado:</mat-label>

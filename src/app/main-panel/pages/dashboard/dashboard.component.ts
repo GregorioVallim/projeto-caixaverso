@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { first } from 'rxjs';
 import { DashboardService } from '../../../core/service/dashboard.service';
+import { TransactionsService } from '../../../core/service/transactions.service';
 import { NegativeValuesPipe } from '../../../shared/pipes/negative-values.pipe';
 import { Account } from './models/account.model';
 import { Transactions } from './models/transactions.model';
@@ -17,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIcon } from "@angular/material/icon";
+import { toSignal } from '@angular/core/rxjs-interop';
 
 
 
@@ -30,29 +32,41 @@ import { MatIcon } from "@angular/material/icon";
     NegativeValuesPipe,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule, MatIcon],
+    FormsModule,
+    MatIcon
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  private readonly dashboardService = inject(DashboardService);
+  // private readonly dashboardService = inject(DashboardService);
   private readonly routerService = inject(RouterService);
   
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private transactionsService = inject(TransactionsService);
+  private dashboardService = inject(DashboardService);
 
   private valorSubject = new BehaviorSubject<number | null>(null);
   account2$ = this.valorSubject.asObservable();
+
+  transactions = toSignal(this.transactionsService.getTransactions(), {
+    initialValue: [] as Transactions[],
+  })
+
+  account = toSignal(this.dashboardService.getAccount(), {
+    initialValue: undefined,
+  })
   
-  account?: Account;
+  // account?: Account;
   newBalance?: Account;
   calculator: number = 0;
-  transactions?: any;  
+  // transactions: Transactions[] = []; 
   transctionPagesEnum = TransactionPagesEnum;
   pagesEnum = Pages;
   searchTransactions: string = '';
 
-  colunasTabela: string[] = ["id", "date", "description", "amount"];
+  // colunasTabela: string[] = ["id", "date", "description", "amount"];
  
   isBalanceVisible = signal(true);
   
@@ -68,36 +82,36 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getAccount();
-    this.getTransactions();   
+    // this.getAccount();
+    // this.getTransactions();   
     
     this.getAccountValue();     
   }
 
-  getAccount (): void {
-    this.dashboardService.getAccount().pipe(first()).subscribe({
-      next: (res: Account) => {
-        this.account = res;            
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
+  // getAccount (): void {
+  //   this.dashboardService.getAccount().pipe(first()).subscribe({
+  //     next: (res: Account) => {
+  //       this.account = res;            
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //   });
+  // }
 
-  getTransactions (): void {
-    this.dashboardService.getTransactions().pipe(first()).subscribe({
-      next: (res: Transactions) => {
-        this.transactions = res;                
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    })
-  }
+  // getTransactions (): void {
+  //   this.dashboardService.getTransactions().pipe(first()).subscribe({
+  //     next: (res: Transactions[]) => {
+  //       this.transactions = res;                
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //   })
+  // }
 
   filterTransactions() : Transactions[] {
-    return this.transactions.filter((item: Transactions) =>
+    return this.transactions().filter((item: Transactions) =>
        item.description.toLowerCase().includes(this.searchTransactions.toLowerCase()))
   }
 
@@ -149,7 +163,7 @@ export class DashboardComponent implements OnInit {
 
 
     redirectToPage(page: Pages): void {
-    this.router.navigate(['/transactions/list']);    
+    this.router.navigate(['/transactions']);    
     }
   // CalculatorBalance() {
   //   this.getAccount(); 
