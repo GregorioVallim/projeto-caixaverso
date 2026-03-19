@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { EmprestimoPessoalComponent } from './components/emprestimo-pessoal/emprestimo-pessoal.component';
+import { ConsignadoComponent } from './components/consignado/consignado.component';
 
 @Component({
   selector: 'app-credit-simulator',
@@ -15,7 +17,9 @@ import { MatSelectModule } from '@angular/material/select';
             MatButtonModule, 
             MatSelectModule, 
             NgIf,
-            FormsModule
+            FormsModule,
+            EmprestimoPessoalComponent,
+            ConsignadoComponent
           ],
   templateUrl: './credit-simulator.component.html',
   styleUrl: './credit-simulator.component.css'

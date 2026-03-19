@@ -17,22 +17,23 @@ import { Account } from '../../../dashboard/models/account.model';
 import { RouterService } from '../../../../../core/service/router.service';
 import { TransactionPagesEnum } from '../../../../../constants/transaction-pages.enum';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-create-transaction',
   imports: [
     ReactiveFormsModule,
-    MatCardModule, 
-    FormsModule, 
+    MatCardModule,
+    FormsModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
-    NgxMaskDirective   
-  ],
+    NgxMaskDirective,
+    RouterOutlet
+],
   templateUrl: './create-transaction.component.html',
   providers: [provideNativeDateAdapter(), provideNgxMask()],
   styleUrl: './create-transaction.component.css'

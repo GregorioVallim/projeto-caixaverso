@@ -7,16 +7,25 @@
     <div class="saldo">
     
         <div>
-            <mat-card appearance="outlined" class="ps-3 pt-2">
-                <mat-card-header class="mb-30">
+            <mat-card class="ps-3 pt-2">
+                <mat-card-header class="mb-30 d-flex justify-content-between">
                     <mat-card-title class="mb-30">Saldo em Conta</mat-card-title>
-                    <mat-card-subtitle class="fz-20">R$ {{ account?.balance}}</mat-card-subtitle>
+                    <button class="pt-0 mx-2" mat-icon-button (click)="toogleBalance()">
+                        <mat-icon>{{ isBalanceVisible() ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-card-subtitle class="fz-20">
+                        @if (isBalanceVisible()) {
+                            R$ {{ account?.balance}}
+                        } @else {
+                            R$ ********
+                        }
+                    </mat-card-subtitle>
                 </mat-card-header>
             
             </mat-card>
         </div>    
         <div>
-            <mat-card appearance="outlined" class="ps-3 pt-2">
+            <mat-card class="ps-3 pt-2">
                 <mat-card-header class="mb-30">
                     <mat-card-title class="mb-30">Receitas</mat-card-title>                    
                     <mat-card-subtitle class="fz-20">R$ {{ account?.balance }}</mat-card-subtitle>
@@ -25,7 +34,7 @@
             </mat-card>
         </div>    
         <div>
-            <mat-card appearance="outlined" class="ps-3 pt-2">
+            <mat-card class="ps-3 pt-2">
                 <mat-card-header class="mb-30">
                     <mat-card-title class="mb-30">Despesas</mat-card-title>
                     <mat-card-subtitle class="fz-20 fc-red">-R$ {{ account?.balance }}</mat-card-subtitle>
@@ -41,7 +50,7 @@
             <mat-card-title class="mb-4 fs-3">Últimas Transações</mat-card-title>            
         </div>
                 
-        <mat-card appearance="outlined" class="mt-40">
+        <mat-card  class="mt-40">
             <mat-form-field appearance="outline" class="mt-5  mx-5">
                     <mat-label >Buscar</mat-label>
                     <input type="text" matInput [(ngModel)]="searchTransactions">

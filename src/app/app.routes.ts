@@ -5,13 +5,33 @@ import { TransactionsComponent } from './main-panel/pages/transactions/transacti
 import { CreditSimulatorComponent } from './main-panel/pages/credit-simulator/credit-simulator.component';
 import { CreateTransactionComponent } from './main-panel/pages/transactions/components/create-transaction/create-transaction.component';
 import { ListTransactionComponent } from './main-panel/pages/transactions/components/list-transaction/list-transaction.component';
+import { NotFoundComponent } from './main-panel/pages/not-found/not-found.component';
+import { ProfileComponent } from './main-panel/pages/profile/profile.component';
+import { PersonalDataComponent } from './main-panel/pages/profile/pages/personal-data/personal-data.component';
+import { SecurityDataComponent } from './main-panel/pages/profile/pages/security-data/security-data.component';
 
 export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'transactions', component: TransactionsComponent },    
-    { path: 'transactions/create', component: CreateTransactionComponent },    
-    { path: 'transactions/list', component: ListTransactionComponent },    
+    { 
+        path: 'transactions', 
+        component: TransactionsComponent,
+        children: [
+            { path: 'create', component: CreateTransactionComponent },    
+            { path: 'list', component: ListTransactionComponent },
+            { path: '', redirectTo: 'list', pathMatch: 'full' }
+        ] 
+    },
     { path: 'transfer', component: TransferComponent },    
-    { path: 'credit', component: CreditSimulatorComponent },    
-    { path: '', redirectTo: 'dashboard', pathMatch: "full" },    
+    { path: 'credit', component: CreditSimulatorComponent }, 
+    {
+        path: "perfil",
+        component: ProfileComponent,
+        children: [
+            { path: 'dados', component: PersonalDataComponent },
+            { path: 'seguranca', component: SecurityDataComponent },
+            { path: '', redirectTo: 'dados', pathMatch: 'full' },
+        ]
+    },   
+    { path: '', redirectTo: 'dashboard', pathMatch: "full" },  
+    { path: '**', component: NotFoundComponent },  // tem que ser o último item do array
 ];

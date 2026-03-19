@@ -35,7 +35,7 @@
 <div class="pai p-5" >
    
 
-      <mat-card appearance="outlined" class="mt-40  p-5">
+      <mat-card class="mt-40  p-5">
 
         <mat-card-title class="mb-4 fs-2">Simule o seu Empréstimo:</mat-card-title>
 
@@ -47,7 +47,25 @@
           </mat-select>
         </mat-form-field>
 
-         <mat-card appearance="outlined" class="mt-40 p-5" *ngIf="selectedOption === 'input1'">          
+        <div *ngIf="selectedOption === 'input1'">
+            @defer (on interaction) {
+                <app-emprestimo-pessoal></app-emprestimo-pessoal>
+            }
+            @placeholder {
+                <p>Carregando componente de Empréstimo Pessoal...</p>
+            }
+        </div>
+
+        <div *ngIf="selectedOption === 'input2'">
+            @defer (on immediate) {
+                <app-consignado></app-consignado>
+            }
+            @loading (minimum 2s) {
+                <p>Carregando componente de Consignado...</p>
+            }
+        </div>
+
+         <!-- <mat-card appearance="outlined" class="mt-40 p-5" *ngIf="selectedOption === 'input1'">          
 
             <mat-card-title class="mb-4 fs-2">Empréstimo Pessoal:</mat-card-title>                        
 
@@ -135,7 +153,10 @@
                 </div>                
             }
 
-        </mat-card>
+        </mat-card> -->
+
+        
+
 
       </mat-card>
 

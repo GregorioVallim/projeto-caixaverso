@@ -1,5 +1,5 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, effect } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
@@ -16,21 +16,21 @@ import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatIcon } from "@angular/material/icon";
 
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatCardModule, 
-            MatTableModule, 
-            MatButtonModule, 
-            CommonModule, 
-            CurrencyPipe, 
-            NegativeValuesPipe, 
-            MatInputModule,
-            MatFormFieldModule,
-            FormsModule
-          ],
+  imports: [MatCardModule,
+    MatTableModule,
+    MatButtonModule,
+    CommonModule,
+    CurrencyPipe,
+    NegativeValuesPipe,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule, MatIcon],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -53,23 +53,25 @@ export class DashboardComponent implements OnInit {
   searchTransactions: string = '';
 
   colunasTabela: string[] = ["id", "date", "description", "amount"];
-
-   redirectToPage(page: Pages): void {
-    this.router.navigate(['/transactions/list']);
-    
+ 
+  isBalanceVisible = signal(true);
+  
+  constructor() {
+    effect(() => {
+      console.log('A visibilade do extrato mudou para:', this.isBalanceVisible());      
+    });
   }
 
-  //  backToList(): void {
-  //     this.routerService.setTransactionPage(TransactionPagesEnum.LIST);
-  //   }
+  toogleBalance(): void {
+    this.isBalanceVisible.update((visible) => !visible);
+  }
 
 
   ngOnInit(): void {
     this.getAccount();
     this.getTransactions();   
     
-    this.getAccountValue();    
-    
+    this.getAccountValue();     
   }
 
   getAccount (): void {
@@ -116,7 +118,7 @@ export class DashboardComponent implements OnInit {
         if (valorAtual !== null) {
             let numero: number = valorAtual; // agora é garantidamente um inteiro
             console.log('Número pronto para enviar:', numero);
-            numero = numero + 20000;
+            // numero = numero + 20000;
             console.log('Número pronto para enviar:', numero);
             this.saveBalance(numero);
         }                 
@@ -144,6 +146,11 @@ export class DashboardComponent implements OnInit {
         },
       });    
   }
+
+
+    redirectToPage(page: Pages): void {
+    this.router.navigate(['/transactions/list']);    
+    }
   // CalculatorBalance() {
   //   this.getAccount(); 
   //   let soma: number;

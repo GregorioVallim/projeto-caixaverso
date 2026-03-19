@@ -41,6 +41,12 @@ export class SidebarComponent {
       page: Pages.CREDIT,
       selected: false,
     },
+    {
+      label: 'Perfil',
+      icon: 'person',
+      page: Pages.PROFILE,
+      selected: false,
+    },
   ];
 
   // redirectToPage(page: Pages): void {
