@@ -4,6 +4,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { DashboardService } from '../core/service/dashboard.service';
 import { Account } from '../main-panel/pages/dashboard/models/account.model';
 import { MatCardModule } from '@angular/material/card';
+import { AuthService } from '../core/service/auth.service';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -13,20 +16,37 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  private readonly dashboardService = inject(DashboardService);
+  // private readonly dashboardService = inject(DashboardService);
+  readonly authService = inject(AuthService);
+  private dashboardService = inject(DashboardService);
 
-  account?: Account;
+  account = toSignal(this.dashboardService.getAccount(), {
+    initialValue: undefined,
+  })
 
-  ngOnInit(): void {
-    this.dashboardService.getAccount().subscribe({
-      next: (res: Account) => {
-        this.account = res;
-        // console.log(this.account);        
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+  constructor(private readonly translate: TranslateService) {}
+
+  mudarIdioma(idioma: string) {
+    this.translate.use(idioma);
   }
+
+  // account?: Account;
+
+  // ngOnInit(): void {
+  //   this.dashboardService.getAccount().subscribe({
+  //     next: (res: Account) => {
+  //       this.account = res;
+  //       // console.log(this.account);        
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //   });
+  // }
+
+  logout() {
+    this.authService.logout();
+  }
+
 
 }

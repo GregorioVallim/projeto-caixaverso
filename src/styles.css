@@ -7,9 +7,4 @@ body, * {
 /* html, body { height: 100%; } */
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.meu-botao-customizado {
-  /* Altera a cor de fundo */
-  background-color: #000;
-  /* Altera a cor do texto */
-  color: white;
-}
+

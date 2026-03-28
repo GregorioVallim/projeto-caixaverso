@@ -1,0 +1,16 @@
+{
+    "SIDEBAR": {
+        "DASHBOARD": "Painel",
+        "TRANSACTIONS": "Movimentos",
+        "TRANSFER": "Transferência",
+        "CREDIT": "Crédito",
+        "PROFILE": "Perfil"
+    },
+    "DASHBOARD": {
+        "SALDO_DISPONIVEL": "Saldo Contabilístico",
+        "RECEITAS": "Receitas",
+        "DESPESAS": "Despesas",
+        "BEM-VINDO": "Bem-vindo",
+        "ULTIMAS_TRANSACOES": "Últimos Movimentos"
+    }
+}

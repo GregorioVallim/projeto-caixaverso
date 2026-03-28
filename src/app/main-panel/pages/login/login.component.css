@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+  /* background-color: #FAFAFA; */
+}
+
+.container-transfer {
+    padding: 40px 100px;
+}
+
+.pai {
+    padding: 10px 100px;
+}
+
+.cards {
+    background-color: #212529;
+    color: #fff;
+}
+
+.branco {
+    color: #fff;
+    background-color: #212529;
+}
+
+.branco:hover {
+    background-color: #323539;
+}

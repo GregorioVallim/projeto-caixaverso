@@ -1,0 +1,16 @@
+{
+    "SIDEBAR": {
+        "DASHBOARD": "Home",
+        "TRANSACTIONS": "Extrato",
+        "TRANSFER": "Transferência",
+        "CREDIT": "Crédito",
+        "PROFILE": "Perfil"
+    },
+    "DASHBOARD": {
+        "SALDO_DISPONIVEL": "Saldo Disponível",
+        "RECEITAS": "Receitas",
+        "DESPESAS": "Despesas",
+        "BEM-VINDO": "Bem-vindo",
+        "ULTIMAS_TRANSACOES": "Últimas Transações"
+    }
+}

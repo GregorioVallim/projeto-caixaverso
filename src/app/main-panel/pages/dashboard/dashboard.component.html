@@ -1,7 +1,7 @@
 <div class="div-pai">
 
     <div class="welcome">
-            <mat-card-title class="mb-4 fs-3">Bem-vindo, {{ account()?.name }}!</mat-card-title>            
+            <mat-card-title class="mb-4 fs-3">{{ 'DASHBOARD.BEM-VINDO' | translate  }}, {{ account()?.name }}!</mat-card-title>            
     </div>
     
     <div class="saldo">
@@ -9,7 +9,7 @@
         <div>
             <mat-card class="ps-3 pt-2 cards">
                 <mat-card-header class="mb-30 d-flex justify-content-between">
-                    <mat-card-title class="mb-30">Saldo em Conta</mat-card-title>
+                    <mat-card-title class="mb-30">{{ 'DASHBOARD.SALDO_DISPONIVEL' | translate  }}</mat-card-title>
                     <button class="pt-0 mx-2" mat-icon-button (click)="toogleBalance()">
                         <mat-icon>{{ isBalanceVisible() ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
@@ -27,7 +27,7 @@
         <div>
             <mat-card class="ps-3 pt-2 cards">
                 <mat-card-header class="mb-30">
-                    <mat-card-title class="mb-30">Receitas</mat-card-title>                    
+                    <mat-card-title class="mb-30">{{ 'DASHBOARD.RECEITAS' | translate  }}</mat-card-title>                    
                     <mat-card-subtitle class="fz-20 cards">R$ {{ account()?.balance }}</mat-card-subtitle>
                 </mat-card-header>
             
@@ -36,7 +36,7 @@
         <div>
             <mat-card class="ps-3 pt-2 cards">
                 <mat-card-header class="mb-30">
-                    <mat-card-title class="mb-30">Despesas</mat-card-title>
+                    <mat-card-title class="mb-30">{{ 'DASHBOARD.DESPESAS' | translate  }}</mat-card-title>
                     <mat-card-subtitle class="fz-20 fc-red">-R$ {{ account()?.balance }}</mat-card-subtitle>
                 </mat-card-header>
             
@@ -47,7 +47,7 @@
 
     <div>
         <div class="mt-40 welcome">
-            <mat-card-title class="mb-4 fs-3">Últimas Transações</mat-card-title>            
+            <mat-card-title class="mb-4 fs-3">{{ 'DASHBOARD.ULTIMAS_TRANSACOES' | translate  }}</mat-card-title>            
         </div>
                 
         <mat-card  class="mt-40 cards">

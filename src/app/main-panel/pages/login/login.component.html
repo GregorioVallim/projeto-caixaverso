@@ -1,22 +1,27 @@
-<h2>Login</h2>
-<mat-card>
+
+<div class="pai container-transfer pt-4">
+    
     <form (ngSubmit)="onSubmit()">
-        <div>
+        <mat-card appearance="outlined" class="mt-5 p-5 cards" >
+            <mat-card-title class="mb-4 fs-3 d-flex justify-content-center align-items-center">Login</mat-card-title>
+        
             <mat-form-field appearance="outline">
                 <mat-label for="email">E-mail:</mat-label>
                 <input matInput type="email" id="email" [(ngModel)]="email" name="email" required>
             </mat-form-field>
-        </div>
-
-        <div>
-            <mat-form-field appearance="outline">
+        
+            <mat-form-field appearance="outline" class="branco">
                 <mat-label for="password">Password:</mat-label>
                 <input matInput type="password" id="password" [(ngModel)]="password" name="password" required>
             </mat-form-field>
-        </div>
+        
 
-        <button mat-stroked-button type="submit">Login</button>
+            <div>
+                <button class="px-4 fs-5" mat-stroked-button type="submit">Entrar</button>
+            </div>
 
-        <p *ngIf="errorMessage">{{ errorMessage }}</p>
+            <p *ngIf="errorMessage">{{ errorMessage }}</p>
+        </mat-card>
     </form>
-</mat-card>
+
+</div>

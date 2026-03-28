@@ -5,10 +5,11 @@ import { RouterService } from '../core/service/router.service';
 import { MenuItem } from '../models/menu-item.model';
 import { RouterModule } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [MatButtonModule, MatIconModule, RouterModule],
+  imports: [MatButtonModule, MatIconModule, RouterModule, TranslatePipe],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
@@ -18,31 +19,31 @@ export class SidebarComponent {
 
   menuItems: MenuItem[] = [
     {
-      label: 'Home',
+      label: 'SIDEBAR.DASHBOARD',
       icon: 'home',
       page: Pages.DASHBOARD,
       selected: true,
     },
     {
-      label: 'Extrato',
+      label: 'SIDEBAR.TRANSACTIONS',
       icon: 'analytics',
       page: Pages.TRANSACTIONS,
       selected: false,
     },
     {
-      label: 'Transferência',
+      label: 'SIDEBAR.TRANSFER',
       icon: 'send_money',
       page: Pages.TRANSFER,
       selected: false,
     },
     {
-      label: 'Crédito',
+      label: 'SIDEBAR.CREDIT',
       icon: 'paid',
       page: Pages.CREDIT,
       selected: false,
     },
     {
-      label: 'Perfil',
+      label: 'SIDEBAR.PROFILE',
       icon: 'person',
       page: Pages.PROFILE,
       selected: false,

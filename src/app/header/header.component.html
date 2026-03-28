@@ -1,6 +1,6 @@
 <header class="header">
     <div class="welcome">
-        <mat-card-title class="mt-30 d-flex justify-content-center align-items-center fs-3">Olá, {{ account?.name }}! </mat-card-title>
+        <mat-card-title class="mt-30 d-flex justify-content-center align-items-center fs-3">Olá, {{ account()?.name }}! </mat-card-title>
         <!-- Olá, {{ account?.name }}!   -->
     </div>
 
@@ -11,16 +11,37 @@
     <div class="welcome">
         
             
+           <button 
+           mat-icon-button 
+           class="icon-btn"
+           (click)="mudarIdioma('pt-br')"
+           title="Mudar idioma para Português Brasileiro"
+           aria-label="Mudar idioma para Português Brasileiro"
+           >
+           🇧🇷            
+           </button>
+           <button 
+           mat-icon-button 
+           class="icon-btn"
+           (click)="mudarIdioma('pt-pt')"
+           title="Mudar idioma para Português Portugal"
+           aria-label="Mudar idioma para Português Portugal"
+           >
+           🇵🇹           
+           </button>
            <button mat-icon-button class="text-white">
                 <mat-icon  
                     fontIcon="notifications_unread">
                 </mat-icon>        
             </button>
-            <button mat-icon-button class="text-white">
-                <mat-icon 
-                    fontIcon="logout">
-                </mat-icon>        
-            </button>
+
+            @if (authService.isAuthenticated()) {
+                <button mat-icon-button class="text-white" (click)="logout()">
+                    <mat-icon 
+                        fontIcon="logout">
+                    </mat-icon>        
+                </button>
+            }
      
     </div>
 </header>

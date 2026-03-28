@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIcon } from "@angular/material/icon";
 import { toSignal } from '@angular/core/rxjs-interop';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -33,7 +34,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatIcon
+    MatIcon,
+    TranslateModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
