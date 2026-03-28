@@ -10,3 +10,17 @@
 .taxa {
     color: #6f6b6b;
 }
+
+.cards {
+    background-color: #212529;
+    color: #fff;
+}
+
+.branco {
+    color: #fff;
+    background-color: #212529;
+}
+
+.branco:hover {
+    background-color: #323539;
+}

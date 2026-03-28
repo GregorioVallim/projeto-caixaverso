@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Transactions } from '../../main-panel/pages/dashboard/models/transactions.model';
@@ -21,12 +21,12 @@ export class TransactionsService {
     return this.http.get<Transactions[]>(`${this.apiUrl}`);
   }
 
-  createTransaction(transaction: Transactions): Observable<void> {
-      return this.http.post<void>(`${this.apiUrl}`, transaction);
+  createTransaction(transaction: Omit<Transactions, 'id'>): Observable<Transactions> {      
+      return this.http.post<Transactions>(`${this.apiUrl}`, transaction);
   }
 
-  updateTransaction(transaction: Transactions, id: string): Observable<void> {
-      return this.http.put<void>(`${this.apiUrl}/${id}`, transaction);
+  updateTransaction(transaction: Omit<Transactions, 'id'>, id: string): Observable<Transactions> {    
+      return this.http.put<Transactions>(`${this.apiUrl}/${id}`, transaction);
   }
 
   getTransactionById(id: string): Observable<Transactions> {
@@ -34,6 +34,8 @@ export class TransactionsService {
   }
 
   deleteTransaction(id: string): Observable<void> {
-      return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    // Exemplo para enviar um motivo de cancelamento junto com a requisição de DELETE
+      const params = new HttpParams().set('motivo', 'cancelamento');
+      return this.http.delete<void>(`${this.apiUrl}/${id}`, { params });
   }
 }

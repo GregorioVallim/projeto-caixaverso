@@ -1,0 +1,150 @@
+{
+  "account": {
+    "id": "1154",
+    "name": "Cliente Demo",
+    "balance": 5230.75
+  },
+  "transactions": [
+    {
+      "date": "2026-03-02T03:00:00.000Z",
+      "description": "PIX",
+      "amount": -666,
+      "type": "expense",
+      "deletando": false,
+      "id": "aab8"
+    },
+    {
+      "id": "fc74",
+      "date": "2026-03-05T03:00:00.000Z",
+      "description": "PIX",
+      "amount": 5000,
+      "type": "income",
+      "deletando": false
+    },
+    {
+      "id": "59e3",
+      "date": "2026-03-10T03:00:00.000Z",
+      "description": "Salário",
+      "amount": 4500,
+      "type": "income",
+      "deletando": false
+    },
+    {
+      "id": "eeac",
+      "date": "2026-03-19T03:00:00.000Z",
+      "description": "Netflix",
+      "amount": -39.9,
+      "type": "expense",
+      "deletando": false
+    },
+    {
+      "date": "2026-03-19T03:00:00.000Z",
+      "description": "PIX",
+      "amount": -150,
+      "type": "expense",
+      "deletando": false,
+      "id": "2584"
+    },
+    {
+      "id": "98b7",
+      "date": "2026-03-19T03:00:00.000Z",
+      "description": "PIX",
+      "amount": 500,
+      "type": "income",
+      "deletando": false
+    },
+    {
+      "id": "6923",
+      "date": "2026-03-26",
+      "description": "PIX",
+      "amount": 15000,
+      "type": "income",
+      "deletando": false
+    }
+  ],
+  "transfers": [
+    {
+      "id": "4bdc",
+      "agencia": 145,
+      "conta": 75854,
+      "tipoPessoa": null,
+      "nome": "Jose pereira ",
+      "cpf": "01458963025",
+      "date": "2026-02-25T03:00:00.000Z",
+      "description": "PIX",
+      "amount": -145,
+      "type": "expense",
+      "deletando": false
+    },
+    {
+      "id": "66f5",
+      "agencia": 145,
+      "conta": 14569,
+      "tipoPessoa": "CNPJ",
+      "nome": "Casa das Tintas",
+      "cpf": "01425896323",
+      "date": "2026-02-25T03:00:00.000Z",
+      "description": "Tinta",
+      "amount": -450,
+      "type": "expense",
+      "deletando": false
+    },
+    {
+      "id": "d291",
+      "agencia": 145,
+      "conta": 75680,
+      "tipoPessoa": "CPF",
+      "nome": "Vallim",
+      "cpf": "06054152696",
+      "date": "2026-03-02T03:00:00.000Z",
+      "description": "PIX",
+      "amount": -15,
+      "type": "expense",
+      "deletando": false
+    },
+    {
+      "id": "afae",
+      "agencia": 145,
+      "conta": 1225,
+      "tipoPessoa": "CNPJ",
+      "nome": "Empresa",
+      "cpf": null,
+      "cnpj": "00000000000000",
+      "date": "2026-03-02T03:00:00.000Z",
+      "description": "PIX",
+      "amount": -150,
+      "type": "expense",
+      "deletando": false
+    },
+    {
+      "id": "d16d",
+      "agencia": 145,
+      "conta": 45693,
+      "tipoPessoa": "CPF",
+      "nome": "Vallim",
+      "cpf": "45555555555",
+      "cnpj": null,
+      "date": "2026-03-12T03:00:00.000Z",
+      "description": "PIX",
+      "amount": 7000,
+      "type": "income",
+      "deletando": false
+    },
+    {
+      "id": "a827",
+      "agencia": 1455,
+      "conta": 14555,
+      "tipoPessoa": "CNPJ",
+      "nome": "Empresa",
+      "cpf": null,
+      "cnpj": "11111111111111",
+      "date": "2026-03-02T03:00:00.000Z",
+      "description": "PIX",
+      "amount": -1000,
+      "type": "expense",
+      "deletando": false
+    }
+  ],
+  "loans": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

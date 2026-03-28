@@ -79,7 +79,7 @@ export class ListTransactionComponent implements OnInit{
       .pipe(first())
       .subscribe({
         next: () => {
-          this.transactions();     
+          this.backToList();     
         },
         error: (err) => {
           console.log(err);

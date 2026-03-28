@@ -1,24 +1,24 @@
 <div class=" container">
         <div class="example-button-row mt-4 d-flex justify-content-center align-items-center ">
-            <button class="mb-5 py-4 px-4 fs-5" mat-flat-button (click)="redirectToCreate()">Adicionar Transação</button>    
+            <button class="mb-5 py-4 px-4 fs-5 branco" mat-flat-button (click)="redirectToCreate()">Adicionar Transação</button>    
         </div>
         
-        <mat-card appearance="outlined" class="mt-40 p-3">
+        <mat-card appearance="outlined" class="mt-40 p-3 cards">
             <mat-card-title class="mb-4 mt-4 mx-5 fs-3">Extrato</mat-card-title>
             <mat-card-content>
-                <table class="table table-striped">
+                <table class="table table-dark table-hover">
                     <thead>
-                        <tr>
+                        <tr class="tabela">
                             <th scope="col">Data</th>
                             <th scope="col">Descrição</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Tipo</th>
-                            <th scope="col">Ações</th>
+                            <th class="tabela" scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         @for (item of transactions(); track $index) {
-                            <tr>
+                            <tr class="tabela">
                                 <td>{{ item.date | date: "dd/MM/yyyy" }}</td>
                                 <td>{{ item.description }}</td>
                                 <td [class]="item.amount | negativeValues">
@@ -30,17 +30,17 @@
                                     }}
                                 </td>
                                 <td>
-                                    <button type="button" mat-button (click)="onEdit(item.id)">
+                                    <button class="branco" type="button" mat-button (click)="onEdit(item.id)">
                                         <mat-icon fontIcon="edit"></mat-icon>
                                         Editar
                                     </button>                                    
                                     @if (!transactions()[$index].deletando) {
-                                        <button type="button" mat-button (click)="prepararadelete(transactions()[$index])">
+                                        <button class="branco" type="button" mat-button (click)="prepararadelete(transactions()[$index])">
                                             <mat-icon fontIcon="delete"></mat-icon>
                                             Excluir
                                         </button>
                                     } @else {
-                                        <button type="button" mat-button (click)="onDelete(transactions()[$index])">
+                                        <button class="branco" type="button" mat-button (click)="onDelete(transactions()[$index])">
                                             <mat-icon fontIcon="question_mark"></mat-icon>
                                             Confirma
                                         </button>                                    

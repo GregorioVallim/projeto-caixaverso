@@ -2,34 +2,34 @@
 
 <div class="pai">
     <div class="mt-4 mb-5 example-button-row d-flex justify-content-center align-items-center ">
-        <button class="py-4 px-4 fs-5 py-4" mat-flat-button (click)="backToList()">Voltar</button>    
+        <button class="py-4 px-4 fs-5 py-4 branco" mat-flat-button (click)="backToList()">Voltar</button>    
     </div>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <mat-card appearance="outlined" class="mt-40 p-5" >
+        <mat-card appearance="outlined" class="mt-40 p-5 cards" >
             <mat-card-title class="mb-4 fs-3">Cadastre a Transação</mat-card-title>
 
             <mat-form-field appearance="outline">
-                <mat-label>Data</mat-label>
+                <mat-label class="branco">Data</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="date">
                 <!-- <mat-hint>DD/MM/YYYY</mat-hint> -->
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker-toggle class="branco" matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             
 
             <mat-form-field appearance="outline">
-                <mat-label for="description">Descrição</mat-label>
+                <mat-label class="branco" for="description">Descrição</mat-label>
                 <input type="text" id="description" formControlName="description" placeholder="Descreva a transação" matInput>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label for="amount">Valor</mat-label>
+            <mat-form-field appearance="outline" class="branco">
+                <mat-label class="branco" for="amount">Valor</mat-label>
                 <input type="text" id="amount" formControlName="amount" matInput mask="separator.2" thousandSeparator="." decimalMarker="," prefix="R$ " >
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-label for="type" >Tipo de transação</mat-label>
+                <mat-label class="branco" for="type" >Tipo de transação</mat-label>
                 <mat-select id="type" formControlName="type">
                     <mat-option [value]="transactionTypeEnum.INCOME">Entrada</mat-option>
                     <mat-option [value]="transactionTypeEnum.EXPENSE">Saída</mat-option>

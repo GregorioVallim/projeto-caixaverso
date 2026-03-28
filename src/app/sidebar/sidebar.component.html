@@ -37,7 +37,7 @@
        <div class="mt-5 ">
       @for (item of menuItems; track $index) {
         <div class="my-4">
-          <button mat-flat-button [routerLink]="`/${item.page}`" routerLinkActive="active" class="w-100 py-4 fs-4"  >
+          <button mat-flat-button [routerLink]="`/${item.page}`" routerLinkActive="active" class="w-100 py-4 fs-4 color-button"  >
             
             {{ item.label }}
             <mat-icon fontIcon={{item.icon}}></mat-icon>

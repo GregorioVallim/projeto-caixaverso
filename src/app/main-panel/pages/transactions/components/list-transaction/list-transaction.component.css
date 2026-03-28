@@ -9,3 +9,21 @@
     padding: 10px 100px;
     max-width: 100%;
 }
+ 
+.tabela {
+    text-align: center;
+}
+
+.cards {
+    background-color: #212529;
+    color: #fff;
+}
+
+.branco {
+    color: #fff;
+    background-color: #212529;
+}
+
+.branco:hover {
+    background-color: #323539;
+}

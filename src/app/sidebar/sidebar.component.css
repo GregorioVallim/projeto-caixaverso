@@ -1,6 +1,6 @@
 aside {
     height: 100vh;
-    background: #3a3d4d;    
+    background: #212529;    
     padding: 24px 24px;
 }
 
@@ -12,8 +12,14 @@ aside {
     justify-content: center;
 }
 
-button {
-    padding: 10px;
+.color-button {
+    background-color: #989a9e;
+    color: #000;
+    border-radius: 20px;
+}
+.color-button:hover {
+    background-color: #43474b;
+    color: #fff;
 }
 
 
